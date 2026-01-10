@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.sketch-pad {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  margin: 15px auto 0;
+  border: 1px solid;
+}
+
+.grid-container {
+  display: flex;
+  flex: 1;
+}
+
+.grid {
+  flex: 1;
+}
+
+.grid-border {
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.container {
+  border: 1px solid purple;
+  width: 100px;
+  height: 100px;
+}
+
+.cell {
+  border: 1px solid;
+  width: 20px;
+  height: 20px;
+}
