@@ -25,24 +25,32 @@ penBtn.addEventListener("click", () => {
   isPenMode = true;
   isEraserMode = false;
   isRainbowMode = false;
+
+  currentMode();
 });
 
 eraserBtn.addEventListener("click", () => {
   isPenMode = false;
   isEraserMode = true;
   isRainbowMode = false;
+
+  currentMode();
 });
 
 rainbowBtn.addEventListener("click", () => {
   isPenMode = false;
   isEraserMode = false;
   isRainbowMode = true;
+
+  currentMode();
 });
 
 clearBtn.addEventListener("click", () => {
   sketchPad.innerHTML = "";
   createGrid();
 });
+
+currentMode();
 
 createGrid();
 
@@ -88,17 +96,20 @@ function createGrid() {
 
       if (i === pixelSlider.value - 1 && j === pixelSlider.value - 1) {
         const gridLine = document.querySelectorAll(".grid");
+        gridLineBtn.classList.add("highlight");
         gridLine.forEach((grid) => {
           grid.classList.add("grid-border");
         });
         gridLineBtn.addEventListener("click", () => {
           if (isToggleGridLines) {
             isToggleGridLines = false;
+            gridLineBtn.classList.remove("highlight");
             gridLine.forEach((grid) => {
               grid.classList.remove("grid-border");
             });
           } else {
             isToggleGridLines = true;
+            gridLineBtn.classList.add("highlight");
             gridLine.forEach((grid) => {
               grid.classList.add("grid-border");
             });
@@ -117,4 +128,20 @@ function randomNumber() {
 
 function randomNumberDecimal() {
   return Math.round(Math.random() * 10) / 10;
+}
+
+function currentMode() {
+  if (isPenMode) {
+    penBtn.classList.add("highlight");
+    eraserBtn.classList.remove("highlight");
+    rainbowBtn.classList.remove("highlight");
+  } else if (isEraserMode) {
+    penBtn.classList.remove("highlight");
+    eraserBtn.classList.add("highlight");
+    rainbowBtn.classList.remove("highlight");
+  } else {
+    penBtn.classList.remove("highlight");
+    eraserBtn.classList.remove("highlight");
+    rainbowBtn.classList.add("highlight");
+  }
 }
